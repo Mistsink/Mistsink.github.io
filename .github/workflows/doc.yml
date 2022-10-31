@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
+
       - name: Build
         run: yarn build
 
@@ -22,5 +23,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.ACTION_SECRET }}
+          github_token: ${{ secrets.ACTION_SECRET }}
           publish_dir: dist
