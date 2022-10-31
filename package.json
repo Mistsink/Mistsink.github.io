@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "Mistsink",
   "license": "MIT",
+  "homepage": "https://Mistsink.github.io/",
   "scripts": {
     "cz": "git add . && git-cz && git push",
     "dev": "vitepress dev .",
