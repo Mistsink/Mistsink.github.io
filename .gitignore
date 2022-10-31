@@ -1,0 +1,7 @@
+node_modules
+.temp
+.cache
+yarn.lock
+.yarn
+.vitepress/dist
+dist
