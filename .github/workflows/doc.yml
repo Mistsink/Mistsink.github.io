@@ -18,8 +18,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      # - name: CreateTag
-      #   run git tag -a
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
