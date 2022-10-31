@@ -71,7 +71,7 @@ createTime: 2022/10/30
 
   - 18人-6
   - 数据库、大数据管理与分析、DB 与 AI 融合、大数 据隐私保护、城市计算等
-  - 横向多![image-20221027173118675](/Users/firework/Library/Application Support/typora-user-images/image-20221027173118675.png)
+  - 横向多![image-20221027173118675](https://raw.githubusercontent.com/Mistsink/image-host/main/img/image-20221027173118675.png)
 - 浙江大学软件学院区块链研究中心课题组
 
   - 40人-8
