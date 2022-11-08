@@ -14,7 +14,7 @@ title: TODO
 
 ### 实践学习项目
 
-- [ ] Gin+Vue 实现的微社区 paopao-ce
+- [x] Gin+Vue 实现的微社区 paopao-ce
 
   https://github.com/rocboss/paopao-ce
 
@@ -70,3 +70,11 @@ title: TODO
 
 - https://github.com/guangzhengli/k8s-tutorials
 
+
+
+## TODO
+
+- [ ] 拼车
+- [ ] 将电报作为存储层的插件
+- [ ] 电报批量下载工具：按特定属性排序后依次下载
+- [ ] 《传奇》各网站源码爬虫并整理规范化
