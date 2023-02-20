@@ -4,4 +4,5 @@ node_modules
 yarn.lock
 .yarn
 .vitepress/dist
+.vitepress/cache
 dist

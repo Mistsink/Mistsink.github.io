@@ -21,5 +21,3 @@ for (const dirName of curDir) {
 
 
 export const sidebarState = resolveSidebar(navDirStates)
-
-

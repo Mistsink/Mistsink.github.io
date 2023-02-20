@@ -1,0 +1,182 @@
+@import url(./vars.css);
+:root {
+    /* 字体大小 */
+    --waline-font-size: 16px;
+  
+    /* 常规颜色 */
+    --waline-white: #fff;
+    --waline-light-grey: #999;
+    --waline-dark-grey: #666;
+  
+    /* 主题色 */
+    --waline-theme-color: var(--vp-c-brand);
+    --waline-active-color: var(--vp-c-brand-light);
+  
+    /* 布局颜色 */
+    /* --waline-color: #444; */
+    --waline-color: var(--vp-c-text-2);
+    --waline-bgcolor: #fff;
+    /* --waline-bgcolor: rgba(0, 0, 0, 0); */
+    --waline-bgcolor-light: #f8f8f8;
+    /* --waline-bgcolor-light: rgba(0, 0, 0, 0); */
+    --waline-bgcolor-hover: #f0f0f0;
+    /* --waline-border-color: #ddd; */
+    --waline-border-color: var(--vp-c-divider);
+    --waline-disable-bgcolor: #f8f8f8;
+    --waline-disable-color: #bbb;
+    --waline-code-bgcolor: #282c34;
+  
+    /* 特殊颜色 */
+    --waline-bq-color: #f0f0f0;
+  
+    /* 头像 */
+    --waline-avatar-size: 3.25rem;
+    --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
+  
+    /* 徽章 */
+    --waline-badge-color: #3498db;
+    --waline-badge-font-size: 0.775em;
+  
+    /* 信息 */
+    --waline-info-bgcolor: #f8f8f8;
+    --waline-info-color: #999;
+    --waline-info-font-size: 0.625em;
+  
+    /* 渲染选择 */
+    --waline-border: 1px solid var(--waline-border-color);
+    --waline-avatar-radius: 50%;
+    --waline-box-shadow: none;
+
+
+    /* custom */
+    --waline-sub-text-color: #302627;
+  }
+  
+  /* 根据用户设置 ↓ */
+  darkmode-selector {
+    /* 常规颜色 */
+    --waline-white: #000;
+    --waline-light-grey: #666;
+    --waline-dark-grey: #999;
+  
+    /* 布局颜色 */
+    --waline-color: #888;
+    --waline-bgcolor: #1e1e1e;
+    --waline-bgcolor-light: #272727;
+    --waline-border-color: #333;
+    --waline-disable-bgcolor: #444;
+    --waline-disable-color: #272727;
+  
+    /* 特殊颜色 */
+    --waline-bq-color: #272727;
+  
+    /* 其他颜色 */
+    --waline-info-bgcolor: #272727;
+    --waline-info-color: #666;
+
+
+    --waline-sub-text-color: #ecdbdd;
+  }
+
+
+  /* custom compoent */
+.wl-panel {
+    margin: 0;
+    transition: border-color 0.25s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.wl-header {
+    border-bottom: 1px dashed var(--waline-border-color);
+    transition: border-color 0.25s;
+}
+.wl-panel:hover, .wl-panel:hover .wl-header {
+    border-color: var(--vp-c-border-hover);
+}
+.wl-panel:focus-within, .wl-panel:focus-within .wl-header {
+    border-color: var(--vp-c-border-hover);
+}
+.wl-editor:focus, .wl-input:focus {
+    background: none;
+}
+.wl-header label {
+    min-width: 40px;
+    padding: 0.75em 0.5em;
+    color: var(--waline-color);
+    font-size: 14px;
+    text-align: center;
+}
+.wl-panel input {
+    font-size: 15px;
+    padding: 0;
+    font-family: var(--vp-font-family-base);
+}
+.wl-panel textarea {
+    font-size: 15px;
+    /* padding: 0; */
+    font-family: var(--vp-font-family-base);
+}
+
+/* .wl-header-item::after {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: '';
+    width: 100px;
+    height: 10px;
+    border-bottom: 1px solid var(--waline-border-color);
+} */
+
+.wl-editor {
+    min-height: 0;
+}
+.wl-btn.primary {
+    border-color: var(--waline-border-color);
+    background: rgba(0, 0, 0, 0);
+    color: var(--waline-theme-color);
+}
+.wl-btn.primary:hover, .wl-btn.primary:active {
+    border-color: var(--waline-border-color);
+    background: var(--waline-theme-color);
+    color: var(--waline-color);
+}
+
+
+.wl-login-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 10px 0 0;
+    margin: 0;
+}
+
+.wl-avatar {
+    width: var(--waline-avatar-size);
+    height: var(--waline-avatar-size);
+    border: none;
+    margin: 0;
+    border-radius: 50%;
+}
+
+.wl-logout-btn {
+    opacity: 0;
+    transition: all 0.25s;
+
+    top: -10px;
+    right: -18px;
+}
+.wl-logout-btn svg {
+    width: 22px !important;
+    height: 22px !important;
+}
+.wl-login-info:hover .wl-logout-btn {
+    opacity: 1;
+}
+
+
+.wl-comment-actions button {
+    padding-right: 5px;
+}
