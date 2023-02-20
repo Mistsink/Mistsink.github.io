@@ -3,8 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^12.1.4
   '@commitlint/config-conventional': ^12.1.4
+  '@docsearch/css': ^3.3.3
+  '@docsearch/js': ^3.3.3
   '@types/node': ^18.14.0
+  '@vueuse/core': ^9.12.0
   '@waline/client': ^2.14.7
+  body-scroll-lock: ^4.0.0-beta
   cz-conventional-changelog: ^3.3.0
   husky: ^5.2.0
   js-yaml: ^4.1.0
@@ -20,7 +24,11 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 12.1.4
   '@commitlint/config-conventional': 12.1.4
+  '@docsearch/css': 3.3.3
+  '@docsearch/js': 3.3.3
   '@types/node': 18.14.0
+  '@vueuse/core': 9.13.0_vue@3.2.47
+  body-scroll-lock: 4.0.0-beta.0
   cz-conventional-changelog: 3.3.0
   js-yaml: 4.1.0
   sass: 1.58.3
