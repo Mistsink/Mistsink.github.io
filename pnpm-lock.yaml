@@ -8,9 +8,9 @@ specifiers:
   husky: ^5.2.0
   js-yaml: ^4.1.0
   sass: ^1.55.0
-  vitepress: ^1.0.0-alpha
+  vitepress: ^1.0.0-alpha.40
   vue: ^3.2.41
-  yzh-theme: ^1.0.2
+  yzh-theme: ^1.0.3
 
 dependencies:
   husky: 5.2.0
@@ -24,7 +24,7 @@ devDependencies:
   sass: 1.58.3
   vitepress: 1.0.0-alpha.46_hlkwzk2izwsolfmdrejei4vrty
   vue: 3.2.47
-  yzh-theme: 1.0.2
+  yzh-theme: 1.0.3_hlkwzk2izwsolfmdrejei4vrty
 
 packages:
 
@@ -2623,19 +2623,26 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /yzh-theme/1.0.2:
-    resolution: {integrity: sha512-XVC9d1ANxwEkMwq3Fdx9nN/q98U4dXkTDkLmyi4X5/E1FnqppxCLedWxoyZVFVmCEsFRpoC3EYwI/JJ82LPk9Q==}
+  /yzh-theme/1.0.3_hlkwzk2izwsolfmdrejei4vrty:
+    resolution: {integrity: sha512-eVpTCJjcfPRQECTKIMGxqILnr3d5GnoLIwCefGodBnr78LCS7LnNbVydWfWWSLjbrMK8z3o5S0lEmALMcWDXmg==}
     dependencies:
       '@docsearch/css': 3.3.3
       '@docsearch/js': 3.3.3
       '@vueuse/core': 9.13.0_vue@3.2.47
       '@waline/client': 2.14.7
       body-scroll-lock: 4.0.0-beta.0
+      vitepress: 1.0.0-alpha.46_hlkwzk2izwsolfmdrejei4vrty
       vue: 3.2.47
     transitivePeerDependencies:
       - '@algolia/client-search'
+      - '@types/node'
       - '@types/react'
       - '@vue/composition-api'
+      - less
       - react
       - react-dom
+      - sass
+      - stylus
+      - sugarss
+      - terser
     dev: true

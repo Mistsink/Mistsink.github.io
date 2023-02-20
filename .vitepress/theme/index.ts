@@ -1,3 +1,5 @@
-import yzhTheme from "yzh-theme";
+import YzhTheme from "../../yzh-theme";
+import DefaultTheme from 'vitepress/theme';
 
-export default yzhTheme
+export default YzhTheme
+// export default DefaultTheme

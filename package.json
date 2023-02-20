@@ -21,7 +21,7 @@
     "sass": "^1.55.0",
     "vitepress": "^1.0.0-alpha",
     "vue": "^3.2.41",
-    "yzh-theme": "^1.0.2"
+    "yzh-theme": "^1.0.3"
   },
   "config": {
     "commitizen": {
