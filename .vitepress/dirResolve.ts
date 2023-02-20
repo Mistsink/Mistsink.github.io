@@ -1,7 +1,7 @@
 import fs from "fs";
 import { load } from "js-yaml";
 
-export const ignoreDirs = ["images", "public", "node_modules", "src", "theme-default", "yzh-theme"];
+export const ignoreDirs = ["images", "public", "node_modules", "src", "theme-default", "yzh-theme", "dist"];
 const ignoreFiles = ["index.md"];
 const ignoreSidebarDirs = ["me"];
 const previewCtnLeng = 25;
