@@ -29,7 +29,8 @@
     }
   },
   "dependencies": {
-    "husky": "^5.2.0"
+    "husky": "^5.2.0",
+    "@waline/client": "^2.14.7"
   },
   "pnpm": {
     "peerDependencyRules": {
