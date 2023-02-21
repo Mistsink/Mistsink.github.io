@@ -381,9 +381,11 @@ insert into t(id, c) values(1,1),(2,2),(3,3),(4,4);
 ```
 
 ![img](https://static001.geekbang.org/resource/image/9b/0b/9b8fe7cf88c9ba40dc12e93e36c3060b.png)
+
 复现出来以后，请你再思考一下，在实际的业务开发中有没有可能碰到这种情况？你的应用代码会不会掉进这个“坑”里，你又是怎么解决的呢？
 
 ![img](https://static001.geekbang.org/resource/image/be/ae/be7a4d8af04cdf93aaa11108933559ae.png)
+
 这样，`session A`看到的就是截图的效果了。
 
 还有另外一种场景:
