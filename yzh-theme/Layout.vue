@@ -66,14 +66,14 @@ provide('hero-image-slot-exists', heroImageSlotExists)
     </VPNav>
     <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
 
-    <VPSidebar :open="isSidebarOpen">
+    <!-- <VPSidebar :open="isSidebarOpen">
       <template #sidebar-nav-before>
         <slot name="sidebar-nav-before" />
       </template>
       <template #sidebar-nav-after>
         <slot name="sidebar-nav-after" />
       </template>
-    </VPSidebar>
+    </VPSidebar> -->
 
     <VPContent>
       <template #home-hero-before>
