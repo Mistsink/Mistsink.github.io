@@ -30,7 +30,7 @@ const NotFound = inject('NotFound')
     class="VPContent"
     id="VPContent"
     :class="{
-      'has-sidebar': hasSidebar,
+      // 'has-sidebar': hasSidebar,
       'is-home': frontmatter.layout === 'home'
     }"
   >

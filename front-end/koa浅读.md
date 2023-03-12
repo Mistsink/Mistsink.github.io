@@ -112,8 +112,6 @@ app.listen(3000)
 
 ## 洋葱模型🧅
 
-![image-20201118233716030](https://user-gold-cdn.xitu.io/2020/3/12/170ce29e8797e2ce?imageslim)
-
 我们先从这个洋葱模型来入手：
 
 ```js
@@ -134,7 +132,7 @@ function compose(middleware) {
         if (i === middleware.length) fn = next
         if (!fn) return Promise.resolve()
         try {
-    
+  
           // 这里进行递归调用，每次dispatch绑定的函数成了use参数列表中的next函数
           return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
         } catch (err) {

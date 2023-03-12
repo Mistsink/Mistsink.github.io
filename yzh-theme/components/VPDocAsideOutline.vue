@@ -4,8 +4,7 @@ import { computed, inject, ref, type Ref } from 'vue'
 import { useData } from '../composables/data.js'
 import {
   getHeaders,
-  useActiveAnchor,
-  type MenuItem
+  useActiveAnchor
 } from '../composables/outline.js'
 import VPDocAsideOutlineItem from './VPDocAsideOutlineItem.vue'
 
@@ -18,9 +17,10 @@ const pageOutline = computed<DefaultTheme.Config['outline']>(
 const onContentUpdated = inject('onContentUpdated') as Ref<() => void>
 onContentUpdated.value = () => {
   headers.value = getHeaders(pageOutline.value, theme.value.outlineBadges)
+  console.log('onContentUpdated: headers:', headers.value)
 }
 
-const headers = ref<MenuItem[]>([])
+const headers = ref<any[]>([])
 const hasOutline = computed(() => headers.value.length > 0)
 
 const container = ref()
