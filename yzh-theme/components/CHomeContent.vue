@@ -9,6 +9,7 @@ interface Article {
     link: string
     createTime?: string
     preview?: string
+    archive?: string
 }
 
 const articles = ref<Article[]>([])
@@ -84,7 +85,10 @@ watch(() => route.path, (newP, oldP) => {
             {{ `${dirTitle}` || "山野沉雾" }}
         </div>
         <a class="article pager-link" v-for="article, i in viewedArticles" :key="i" :href="article.link">
-            <p>{{ article.text }}</p>
+            <div class="preview-time">
+                <p>{{ article.text }}</p>
+                <div class="archive">{{ article.archive }}</div>
+            </div>
             <div v-if="article.preview" class="preview-time">
                 <div class="preview">
                     {{ article.preview }}
