@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { DefaultTheme } from 'vitepress/theme'
-import { computed, inject, ref, type Ref } from 'vue'
-import { useData } from '../composables/data.js'
+import { ref, shallowRef } from 'vue'
+import { onContentUpdated, useData } from 'vitepress'
 import {
   getHeaders,
   useActiveAnchor
@@ -10,18 +9,13 @@ import VPDocAsideOutlineItem from './VPDocAsideOutlineItem.vue'
 
 const { frontmatter, theme } = useData()
 
-const pageOutline = computed<DefaultTheme.Config['outline']>(
-  () => frontmatter.value.outline ?? theme.value.outline
-)
+const headers = shallowRef<any[]>([])
 
-const onContentUpdated = inject('onContentUpdated') as Ref<() => void>
-onContentUpdated.value = () => {
-  headers.value = getHeaders(pageOutline.value, theme.value.outlineBadges)
-  console.log('onContentUpdated: headers:', headers.value)
-}
-
-const headers = ref<any[]>([])
-const hasOutline = computed(() => headers.value.length > 0)
+onContentUpdated(() => {
+  headers.value = getHeaders(
+    frontmatter.value.outline ?? theme.value.outline
+  )
+})
 
 const container = ref()
 const marker = ref()
@@ -35,14 +29,13 @@ function handleClick({ target: el }: Event) {
   )
   heading?.focus()
 }
-
 function scrollToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 }
 </script>
 
 <template>
-  <div class="VPDocAsideOutline" :class="{ 'has-outline': hasOutline }" ref="container">
+  <div class="VPDocAsideOutline" :class="{ 'has-outline': headers.length > 0 }" ref="container">
     <div class="content">
       <div class="outline-marker" ref="marker" />
 

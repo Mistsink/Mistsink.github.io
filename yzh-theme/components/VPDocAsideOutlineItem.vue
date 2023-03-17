@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { MenuItem } from '../composables/outline.js'
-
 defineProps<{
-  headers: MenuItem[]
+  headers: any[]
   onClick: (e: MouseEvent) => void
   root?: boolean
 }>()

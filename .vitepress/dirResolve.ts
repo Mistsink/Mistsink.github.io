@@ -145,7 +145,7 @@ function resolveDirFiles(dirPath: string): DirStateWithLink[] {
       fm.preview = "暂无预览内容";
     }
     if (!fm.createTime) {
-      const createTime = fs.statSync(filename).ctime.toLocaleDateString();
+      const createTime = fs.statSync(filename).ctime.toLocaleDateString('zh-CN');
 
       const replaceStr =
         fm.originText.slice(0, -3) + `createTime: ${createTime}\n---`;

@@ -4,12 +4,12 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { useSidebar } from '../composables/sidebar.js'
 import VPSidebarItem from './VPSidebarItem.vue'
 
-const { sidebarGroups, hasSidebar } = useSidebar()
 
 const props = defineProps<{
   open: boolean
 }>()
 
+const { sidebarGroups, hasSidebar } = useSidebar()
 // a11y: focus Nav element when menu has opened
 let navEl = ref<HTMLElement | null>(null)
 
@@ -32,16 +32,17 @@ watchPostEffect(async () => {
 </script>
 
 <template>
-  <aside
+  <div
     v-if="hasSidebar"
     class="VPSidebar"
     :class="{ open }"
     ref="navEl"
     @click.stop
   >
+  <div>{{ hasSidebar }}</div>
     <div class="curtain" />
 
-    <nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1">
+    <div class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1">
       <span class="visually-hidden" id="sidebar-aria-label">
         Sidebar Navigation
       </span>
@@ -53,8 +54,8 @@ watchPostEffect(async () => {
       </div>
 
       <slot name="sidebar-nav-after" />
-    </nav>
-  </aside>
+    </div>
+  </div>
 </template>
 
 <style scoped>

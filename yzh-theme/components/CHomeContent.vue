@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { useData, useRoute, useRouter } from 'vitepress';
-import { ref, computed, onBeforeMount, onUnmounted, onUpdated} from 'vue'
-import { useScrollToBottom } from '../composables/utils'
+import { useData, useRoute } from 'vitepress';
+import { ref, computed, onBeforeMount, onUnmounted, watch } from 'vue'
+import { useScrollToBottom } from '../utils/utils'
 
 const PageDisplayNum = 10
-
 interface Article {
     text: string
     link: string
@@ -15,23 +14,19 @@ interface Article {
 const articles = ref<Article[]>([])
 const dirTitle = ref('')
 const pageIdx = ref(1)
+const route = useRoute()
+const { theme, site } = useData()
 
 const viewedArticles = computed(() => articles.value.slice(0, PageDisplayNum * pageIdx.value))
 const onScrollToBottom = useScrollToBottom(() => {
     pageIdx.value++
 })
-onBeforeMount(() => {
-    console.log('onBeforeMount')
 
+const useUpdateArticles = () => {
+    // console.log('useUpdateArticles');
+    articles.value = []
 
-    window.addEventListener('scroll', onScrollToBottom);
-
-
-    const { theme } = useData()
-    const { path } = useRoute()
-
-    // console.log('theme:',theme.value)
-    // console.log('path:',path)
+    const { path } = route
 
     //  首页
     if (path === '/') {
@@ -46,21 +41,38 @@ onBeforeMount(() => {
             }))
         }
         articles.value = articles.value.sort((a, b) => a.createTime! > b.createTime! ? -1 : 1)
+        dirTitle.value = site.value.title
+        window.document.title = site.value.title
+
     } else {
         const nav = theme.value.nav as { text: string, link: string }[]
+        // console.log('theme.value.sidebar:', theme.value.sidebar, 'path:', path);
 
-        dirTitle.value = nav.find(val => val.link == path)?.text!
+
         articles.value.push(...theme.value.sidebar[path][0]['items'])
+        dirTitle.value = nav.find(val => val.link == path)?.text!
+
+        // console.log('site:', site.value)
+        window.document.title = `${dirTitle.value} | ${site.value.title}`
     }
+
+    // console.log('articles:', articles.value)
+}
+onBeforeMount(() => {
+    // console.log('CHomeContent onBeforeMount')
+    window.addEventListener('scroll', onScrollToBottom);
+    useUpdateArticles()
 })
 
 
 onUnmounted(() => {
-    console.log('onUnmounted')
     window.removeEventListener('scroll', onScrollToBottom)
 })
-onUpdated(() => {
-    console.log('onUpdated')
+
+watch(() => route.path, (newP, oldP) => {
+    if (newP.endsWith('/')) {
+        useUpdateArticles()
+    }
 })
 
 

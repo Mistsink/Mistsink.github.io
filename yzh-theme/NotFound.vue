@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { withBase } from 'vitepress'
-import { useData } from './composables/data.js'
+import { withBase, useData } from 'vitepress'
+import CHomeContent from './components/CHomeContent.vue'
 import { useLangs } from './composables/langs.js'
 
-const { site } = useData()
+const { site, theme } = useData()
 const { localeLinks } = useLangs({ removeCurrent: false })
 
 const root = ref('/')
+let RealNotFound = ref(true)
+
 onMounted(() => {
   const path = window.location.pathname
     .replace(site.value.base, '')
@@ -17,11 +19,15 @@ onMounted(() => {
       localeLinks.value.find(({ link }) => link.startsWith(path))?.link ||
       localeLinks.value[0].link
   }
+
+  if (path === '' || theme.value.nav.findIndex(({link}) => link === path) != -1) {
+    RealNotFound.value = false
+  }
 })
 </script>
 
 <template>
-  <div class="NotFound">
+  <div class="NotFound" v-if="RealNotFound">
     <p class="code">404</p>
     <h1 class="title">PAGE NOT FOUND</h1>
     <div class="divider" />
@@ -35,6 +41,7 @@ onMounted(() => {
       </a>
     </div>
   </div>
+  <CHomeContent v-else />
 </template>
 
 <style scoped>

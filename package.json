@@ -19,7 +19,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "js-yaml": "^4.1.0",
     "sass": "^1.55.0",
-    "vitepress": "1.0.0-alpha.46",
+    "vitepress": "^1.0.0-alpha",
     "vue": "^3.2.41",
     "yzh-theme": "^1.0.3",
     "@docsearch/css": "^3.3.3",

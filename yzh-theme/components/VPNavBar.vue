@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useWindowScroll } from '@vueuse/core'
 import { useSidebar } from '../composables/sidebar.js'
 import VPNavBarTitle from './VPNavBarTitle.vue'
@@ -22,10 +22,18 @@ defineEmits<{
 const { y } = useWindowScroll()
 const { hasSidebar } = useSidebar()
 
+onMounted(() => {
+  // magic number: After browsing some web pages and refreshing the page,
+  //  make a sudden mutation of y value, causing a change in classes and 
+  //  triggering DOM re-rendering to make the fill class name effective.
+  y.value = -1
+})
+
 const classes = computed(() => ({
   'has-sidebar': hasSidebar.value,
   fill: y.value > 0
-}))
+})
+)
 </script>
 
 <template>
@@ -33,8 +41,12 @@ const classes = computed(() => ({
     <div class="container">
       <div class="title">
         <VPNavBarTitle>
-          <template #nav-bar-title-before><slot name="nav-bar-title-before" /></template>
-          <template #nav-bar-title-after><slot name="nav-bar-title-after" /></template>
+          <template #nav-bar-title-before>
+            <slot name="nav-bar-title-before" />
+          </template>
+          <template #nav-bar-title-after>
+            <slot name="nav-bar-title-after" />
+          </template>
         </VPNavBarTitle>
       </div>
 
@@ -162,6 +174,7 @@ const classes = computed(() => ({
 }
 
 @media (min-width: 960px) {
+
   .VPNavBar.has-sidebar .content-body,
   .VPNavBar.fill .content-body {
     position: relative;
@@ -169,11 +182,11 @@ const classes = computed(() => ({
   }
 }
 
-.menu + .translations::before,
-.menu + .appearance::before,
-.menu + .social-links::before,
-.translations + .appearance::before,
-.appearance + .social-links::before {
+.menu+.translations::before,
+.menu+.appearance::before,
+.menu+.social-links::before,
+.translations+.appearance::before,
+.appearance+.social-links::before {
   margin-right: 8px;
   margin-left: 8px;
   width: 1px;
@@ -182,12 +195,12 @@ const classes = computed(() => ({
   content: "";
 }
 
-.menu + .appearance::before,
-.translations + .appearance::before {
+.menu+.appearance::before,
+.translations+.appearance::before {
   margin-right: 16px;
 }
 
-.appearance + .social-links::before {
+.appearance+.social-links::before {
   margin-left: 16px;
 }
 

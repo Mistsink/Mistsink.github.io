@@ -3,6 +3,8 @@ import { provide } from 'vue'
 import { useNav } from '../composables/nav.js'
 import VPNavBar from './VPNavBar.vue'
 import VPNavScreen from './VPNavScreen.vue'
+import { useSidebar } from '../composables/sidebar'
+useSidebar()
 
 const { isScreenOpen, closeScreen, toggleScreen } = useNav()
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, provide, useSlots, watch, onMounted, watchEffect, onUpdated } from 'vue'
-import { useRoute } from 'vitepress'
-import { useData } from './composables/data.js'
+import { computed, provide, useSlots, watch } from 'vue'
+import { useRoute, useData } from 'vitepress'
 import { useSidebar, useCloseSidebarOnEscape } from './composables/sidebar.js'
 import VPSkipLink from './components/VPSkipLink.vue'
 import VPBackdrop from './components/VPBackdrop.vue'
@@ -18,6 +17,7 @@ const {
   open: openSidebar,
   close: closeSidebar
 } = useSidebar()
+let { frontmatter } = useData()
 
 const route = useRoute()
 watch(() => route.path, closeSidebar)
@@ -27,16 +27,11 @@ useCloseSidebarOnEscape(isSidebarOpen, closeSidebar)
 provide('close-sidebar', closeSidebar)
 provide('is-sidebar-open', isSidebarOpen)
 
-const { frontmatter } = useData()
 
 const slots = useSlots()
 const heroImageSlotExists = computed(() => !!slots['home-hero-image'])
 
 provide('hero-image-slot-exists', heroImageSlotExists)
-
-
-
-
 </script>
 
 <template>
@@ -59,21 +54,21 @@ provide('hero-image-slot-exists', heroImageSlotExists)
       </template>
       <template #nav-screen-content-before>
         <slot name="nav-screen-content-before" />
-      </template>
-      <template #nav-screen-content-after>
+    </template>
+    <template #nav-screen-content-after>
         <slot name="nav-screen-content-after" />
       </template>
     </VPNav>
     <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
 
-    <!-- <VPSidebar :open="isSidebarOpen">
+  <VPSidebar :open="isSidebarOpen">
       <template #sidebar-nav-before>
         <slot name="sidebar-nav-before" />
       </template>
       <template #sidebar-nav-after>
         <slot name="sidebar-nav-after" />
       </template>
-    </VPSidebar> -->
+    </VPSidebar>
 
     <VPContent>
       <template #home-hero-before>
@@ -95,14 +90,14 @@ provide('hero-image-slot-exists', heroImageSlotExists)
       <template #doc-footer-before>
         <slot name="doc-footer-before" />
         <!-- <div class="preview-cnt">
-            浏览量:<span class="waline-pageview-count" />
-          </div>  -->
+                              浏览量:<span class="waline-pageview-count" />
+                            </div>  -->
       </template>
       <template #doc-before></template>
       <template #doc-after>
         <!-- <slot name="doc-after" >
-            the slot doc-after
-          </slot> -->
+                              the slot doc-after
+                            </slot> -->
 
         <Waline class="waline" dark='html[class="dark"]' :serverURL="WalineServerURL" :path="WalinePath" />
       </template>
@@ -121,18 +116,20 @@ provide('hero-image-slot-exists', heroImageSlotExists)
       </template>
       <template #aside-ads-before>
         <slot name="aside-ads-before" />
-    </template>
-    <template #aside-ads-after>
-      <slot name="aside-ads-after" />
-    </template>
-  </VPContent>
+      </template>
+      <template #aside-ads-after>
+        <slot name="aside-ads-after" />
+      </template>
+    </VPContent>
 
-  <VPFooter />
-  <slot name="layout-bottom" />
-</div>
-<Content v-else /></template>
+    <VPFooter />
+    <slot name="layout-bottom" />
+  </div>
+  <Content v-else />
+</template>
 
-<style scoped>.Layout {
+<style scoped>
+.Layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
