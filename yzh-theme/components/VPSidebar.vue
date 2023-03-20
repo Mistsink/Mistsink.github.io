@@ -39,7 +39,6 @@ watchPostEffect(async () => {
     ref="navEl"
     @click.stop
   >
-  <div>{{ hasSidebar }}</div>
     <div class="curtain" />
 
     <div class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1">
