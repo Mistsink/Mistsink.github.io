@@ -10,6 +10,8 @@ import './styles/components/vp-sponsor.css'
 import '@waline/client/waline.css'
 import '@waline/client/waline-meta.css'
 import './styles/waline-vars.css'
+import 'katex/dist/katex.min.css'
+import 'markdown-it-texmath/css/texmath.css'
 
 import Layout from './Layout.vue'
 import NotFound from './NotFound.vue'
