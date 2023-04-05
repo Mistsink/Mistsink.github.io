@@ -46,12 +46,12 @@ export default defineConfig({
 			md.use(require('markdown-it-sup'))
 			md.use(require('markdown-it-ins'))
 			md.use(require('markdown-it-mark'))
-			// md.use(require('markdown-it-katex'))
-			md.use(require('markdown-it-texmath'), {
-				engine: require('katex'),
-				delimiters: 'dollars',
-				katexOptions: { macros: { '\\RR': '\\mathbb{R}' } }
-			})
+			md.use(require('markdown-it-katex'))
+			// md.use(require('markdown-it-texmath'), {
+			// 	engine: require('katex'),
+			// 	delimiters: 'dollars',
+			// 	katexOptions: { macros: { '\\RR': '\\mathbb{R}' } }
+			// })
 			md.use(require('markdown-it-deflist'))
 			md.use(require('markdown-it-footnote'))
 			// md.use(require('markdown-it-img-lazy'))
